@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="shortcut icon" type="image/png"
+			href="#{request.contextPath}/resources/images/favicon.png" />
+	</f:facet>
+	<title>TOPARCHY | ATOM</title>
+	<h:outputScript name="js/layout.js" library="sentinel-layout" />
+	<h:outputStylesheet name="css/screen.css" />
+	<h:outputScript library="js" name="calendar_locale.js" />
+	<ui:insert name="head" />
+</h:head>
+<h:body>
+	<h:form>
+		<pe:layout resizerTip="Resize Me" togglerTipClosed="Open Me"
+			togglerTipOpen="Close Me">
+			<pe:layoutPane position="north" size="80" closable="false">  
+            North  
+        </pe:layoutPane>
+			<pe:layoutPane position="center">
+				<pe:layoutPane position="north" size="50%">
+					<div id="layout-portlets-cover" class="fontRegular">
+						<ui:insert name="centerNorth">
+						</ui:insert>
+					</div>
+				</pe:layoutPane>
+				<pe:layoutPane position="center" minHeight="60">
+					<f:facet name="header">
+						<h:outputText value="Center-Center" />
+					</f:facet>
+					<div id="layout-portlets-cover" class="fontRegular">
+						<ui:insert name="centerCenter">
+						</ui:insert>
+					</div>
+				</pe:layoutPane>
+			</pe:layoutPane>
+			<pe:layoutPane position="west" size="200">
+				<pe:layoutPane position="north" size="33%">  
+                West-North  
+            </pe:layoutPane>
+				<pe:layoutPane position="center" minHeight="60">  
+                West-Center  
+            </pe:layoutPane>
+				<pe:layoutPane position="south" size="33%" initClosed="true">  
+                West-South  
+            </pe:layoutPane>
+			</pe:layoutPane>
+
+			<pe:layoutPane position="south" size="80">  
+            South  
+        </pe:layoutPane>
+		</pe:layout>
+	</h:form>
+
+	<p:ajaxStatus
+		style="width:32px; height:32px; position:fixed; right:12px; bottom:10px">
+		<f:facet name="start">
+			<p:graphicImage name="images/preloader.gif" library="sentinel-layout" />
+		</f:facet>
+
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<h:outputStylesheet name="css/font-icon-layout.css"
+		library="sentinel-layout" />
+	<h:outputStylesheet name="css/sentinel-layout.css"
+		library="sentinel-layout" />
+	<h:outputStylesheet name="css/core-layout.css"
+		library="sentinel-layout" />
+</h:body>
+</html>
