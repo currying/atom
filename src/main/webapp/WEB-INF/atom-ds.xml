@@ -4,10 +4,17 @@
 	xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
 	<datasource jndi-name="java:jboss/datasources/atomDS"
 		pool-name="atomDS" enabled="true" use-java-context="true">
-		<connection-url>jdbc:mysql://127.0.0.1:3306/atom</connection-url>
-		<driver>mysql</driver>
+		<connection-url>jdbc:jtds:sqlserver://localhost:1433/atom</connection-url>
+		<driver>mssql</driver>
+		<pool>
+			<min-pool-size>5</min-pool-size>
+			<max-pool-size>30</max-pool-size>
+			<prefill>true</prefill>
+			<use-strict-min>false</use-strict-min>
+			<flush-strategy>FailingConnectionOnly</flush-strategy>
+		</pool>
 		<security>
-			<user-name>root</user-name>
+			<user-name>sa</user-name>
 			<password>822005</password>
 		</security>
 	</datasource>

@@ -63,7 +63,7 @@ public class LoginRest {
 	@POST
 	@Path("/login")
 	public Response login(DefaultLoginCredentials credential) {
-		System.out.println(request.getSession());
+		System.out.println(request.getSession().getId());
 		if (!this.identity.isLoggedIn()) {
 			this.credentials.setUserId(credential.getUserId());
 			this.credentials.setPassword(credential.getPassword());
