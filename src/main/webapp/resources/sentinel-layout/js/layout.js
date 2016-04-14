@@ -3,7 +3,7 @@ var Sentinel = {
     init: function() {
         this.menubar = this.menubar||$('#layout-menubar');
         this.menubarElement = this.menubar.get(0);
-        this.menubarContainer = this.menubarContainer||this.menubar.children('ul.layout-menubar-container');
+        this.menubarContainer = this.menubarContainer||this.menubar.find('ul.layout-menubar-container');
         this.content = $('#layout-portlets-cover');
         this.topMenu = $('#sm-topmenu');
         this.topMenuItems = this.topMenu.children('li');
@@ -257,7 +257,7 @@ var Sentinel = {
     restoreMenuState: function() {
         this.activeMenuitemId = $.cookie('sentinel_activemenuitem');
         this.menubar = $('#layout-menubar');
-        this.menubarContainer = this.menubar.children('ul.layout-menubar-container');
+        this.menubarContainer = this.menubar.find('ul.layout-menubar-container');
                 
         if($.cookie('sentinel_menumode') === 'slim') {
             this.menubar.addClass('slimmenu');
@@ -417,3 +417,16 @@ $(function() {
 	};
 
 }));
+
+/* Issue #924 is fixed for 5.3+ and 6.0. (compatibility with 5.3) */
+PrimeFaces.widget.Dialog = PrimeFaces.widget.Dialog.extend({
+    
+    enableModality: function() {
+        this._super();
+        $(document.body).children(this.jqId + '_modal').addClass('ui-dialog-mask');
+    },
+    
+    syncWindowResize: function() {
+
+    }
+});
