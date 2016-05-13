@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<f:facet name="first">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+	<title>Bootstrap 101 Template</title>
+	<h:outputStylesheet name="css/bootstrap.min.css" library="bootstrap" />
+	<!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</h:head>
+<body>
+	<h1>你好，世界！</h1>
+	<div class="form-group has-success has-feedback">
+		<label class="control-label" for="inputSuccess2">Input with
+			success</label> <input type="text" class="form-control" id="inputSuccess2"
+			aria-describedby="inputSuccess2Status"/><span
+			class="glyphicon glyphicon-ok form-control-feedback"
+			aria-hidden="true"></span> <span id="inputSuccess2Status"
+			class="sr-only">(success)</span>
+	</div>
+	
+	<h:outputScript name="js/jquery-2.1.4.min.js" library="bootstrap" />
+	<h:outputScript name="js/bootstrap.min.js" library="bootstrap" />
+</body>
+</html>
