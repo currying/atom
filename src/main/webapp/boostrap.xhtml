@@ -18,7 +18,9 @@
 </h:head>
 <body>
 	<h1>你好，世界！</h1>
-	<div class="form-group has-success has-feedback">
+	<h:outputScript name="js/jquery-2.1.4.min.js" library="bootstrap" />
+	<h:outputScript name="js/bootstrap.min.js" library="bootstrap" />
+		<div class="form-group has-success has-feedback">
 		<label class="control-label" for="inputSuccess2">Input with
 			success</label> <input type="text" class="form-control" id="inputSuccess2"
 			aria-describedby="inputSuccess2Status"/><span
@@ -26,8 +28,5 @@
 			aria-hidden="true"></span> <span id="inputSuccess2Status"
 			class="sr-only">(success)</span>
 	</div>
-	
-	<h:outputScript name="js/jquery-2.1.4.min.js" library="bootstrap" />
-	<h:outputScript name="js/bootstrap.min.js" library="bootstrap" />
 </body>
 </html>
