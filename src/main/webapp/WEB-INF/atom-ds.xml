@@ -5,7 +5,7 @@
 	<datasource jndi-name="java:jboss/datasources/atomDS"
 		pool-name="atomDS" enabled="true" use-java-context="true">
 		<connection-url>jdbc:jtds:sqlserver://localhost:1433/atom</connection-url>
-		<driver>mssql</driver>
+		<driver>jtds</driver>
 		<pool>
 			<min-pool-size>5</min-pool-size>
 			<max-pool-size>30</max-pool-size>
