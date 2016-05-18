@@ -4,6 +4,7 @@ import static org.picketlink.idm.model.annotation.IdentityStereotype.Stereotype.
 
 import org.picketlink.idm.model.annotation.AttributeProperty;
 import org.picketlink.idm.model.annotation.IdentityStereotype;
+import org.picketlink.idm.model.basic.Agent;
 import org.picketlink.idm.query.QueryParameter;
 
 @IdentityStereotype(USER)

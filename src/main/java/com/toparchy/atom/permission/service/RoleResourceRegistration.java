@@ -48,7 +48,7 @@ public class RoleResourceRegistration {
 		atomEm.flush();
 		applicationRoleEventSrc.fire(applicationRole);
 		IdentityManager identityManager = this.partitionManager.createIdentityManager();
-		Role role = new Role(applicationRole.getKey());
+		Role role = new Role(applicationRole.getName());
 		identityManager.add(role);
 	}
 
@@ -58,7 +58,7 @@ public class RoleResourceRegistration {
 		atomEm.flush();
 		applicationRoleEventSrc.fire(role);
 		IdentityManager identityManager = this.partitionManager.createIdentityManager();
-		Role role_ = BasicModel.getRole(identityManager, applicationRole.getKey());
+		Role role_ = BasicModel.getRole(identityManager, applicationRole.getName());
 		identityManager.remove(role_);
 	}
 }

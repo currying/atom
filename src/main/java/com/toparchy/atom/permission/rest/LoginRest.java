@@ -22,9 +22,7 @@ import org.picketlink.idm.model.basic.GroupMembership;
 import org.picketlink.idm.model.basic.Role;
 import org.picketlink.idm.query.RelationshipQuery;
 
-import com.toparchy.atom.permission.annotations.P00000011;
 import com.toparchy.atom.permission.model.Member;
-import com.toparchy.atom.permission.service.DeviceBindService;
 
 @Path("/")
 public class LoginRest {
@@ -35,8 +33,6 @@ public class LoginRest {
 	private RelationshipManager relationshipManager;
 	@Inject
 	private DefaultLoginCredentials credentials;
-	@Inject
-	private DeviceBindService deviceBindService;
 	@Context
 	private HttpServletRequest request;
 
@@ -51,13 +47,6 @@ public class LoginRest {
 					.type(MediaType.APPLICATION_JSON_TYPE).build();
 		}
 		return Response.ok().entity("{\"state\":\"not logged\"}").type(MediaType.APPLICATION_JSON_TYPE).build();
-	}
-
-	@POST
-	@Path("/pushBind")
-	@P00000011
-	public void pushBind(PushData pushData) {
-		deviceBindService.deviceBind(identity.getAccount().getId(), pushData);
 	}
 
 	@POST

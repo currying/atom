@@ -20,11 +20,11 @@ public class ApplicationRoleRepository {
 		return atomEm.find(ApplicationRole.class, id);
 	}
 
-	public ApplicationRole findByKey(String key) {
+	public ApplicationRole findByName(String name) {
 		CriteriaBuilder cb = atomEm.getCriteriaBuilder();
 		CriteriaQuery<ApplicationRole> criteria = cb.createQuery(ApplicationRole.class);
 		Root<ApplicationRole> applicationRole = criteria.from(ApplicationRole.class);
-		criteria.select(applicationRole).where(cb.equal(applicationRole.get("key"), key));
+		criteria.select(applicationRole).where(cb.equal(applicationRole.get("name"), name));
 		return atomEm.createQuery(criteria).getSingleResult();
 	}
 

@@ -25,13 +25,13 @@ public class MemberRoleRegistration {
 	private IdentityManager identityManager;
 
 	public void grantRoleToMember(Member member, ApplicationRole applicationRole) {
-		Role role = BasicModel.getRole(identityManager, applicationRole.getKey());
+		Role role = BasicModel.getRole(identityManager, applicationRole.getName());
 		if (!BasicModel.hasRole(relationshipManager, member, role))
 			BasicModel.grantRole(relationshipManager, member, role);
 	}
 
 	public void revokeRoleFromMember(Member member, ApplicationRole applicationRole) {
-		Role role = BasicModel.getRole(identityManager, applicationRole.getKey());
+		Role role = BasicModel.getRole(identityManager, applicationRole.getName());
 		BasicModel.revokeRole(relationshipManager, member, role);
 	}
 

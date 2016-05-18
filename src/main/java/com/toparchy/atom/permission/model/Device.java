@@ -4,6 +4,7 @@ import static org.picketlink.idm.model.annotation.IdentityStereotype.Stereotype.
 
 import org.picketlink.idm.model.annotation.AttributeProperty;
 import org.picketlink.idm.model.annotation.IdentityStereotype;
+import org.picketlink.idm.model.basic.Agent;
 
 @IdentityStereotype(USER)
 public class Device extends Agent {

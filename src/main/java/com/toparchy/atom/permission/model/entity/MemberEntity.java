@@ -1,22 +1,16 @@
 package com.toparchy.atom.permission.model.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
 
 import org.picketlink.idm.jpa.annotations.AttributeValue;
 import org.picketlink.idm.jpa.annotations.entity.IdentityManaged;
 import org.picketlink.idm.jpa.model.sample.simple.IdentityTypeEntity;
+import org.picketlink.idm.model.basic.Agent;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.toparchy.atom.permission.model.Member;
 
-@IdentityManaged({ Member.class })
+@IdentityManaged({ Member.class, Agent.class })
 @Entity
 public class MemberEntity extends IdentityTypeEntity {
 
@@ -43,11 +37,6 @@ public class MemberEntity extends IdentityTypeEntity {
 
 	@AttributeValue
 	private String email;
-
-	@AttributeValue
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "memberEntity")
-	@JsonIgnore
-	private Set<DeviceEntity> devices = new HashSet<DeviceEntity>();
 
 	public String getLoginName() {
 		return this.loginName;
@@ -103,22 +92,6 @@ public class MemberEntity extends IdentityTypeEntity {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Set<DeviceEntity> getDevices() {
-		return devices;
-	}
-
-	public void addDevice(DeviceEntity device) {
-		devices.add(device);
-	}
-
-	public void removeDeivce(DeviceEntity device) {
-		devices.remove(device);
-	}
-
-	public void setDevices(Set<DeviceEntity> devices) {
-		this.devices = devices;
 	}
 
 }

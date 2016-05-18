@@ -120,7 +120,7 @@ public class SecurityInitializer {
 	}
 
 	private void createRoleResource() {
-		ApplicationRole applicationRole = applicationRoleRepository.findByKey("ADMINISTRATOR");
+		ApplicationRole applicationRole = applicationRoleRepository.findByName("ADMINISTRATOR");
 		applicationRole.addApplicationResource(applicationResourceRepository.findByKey("Administrator"));
 		applicationRole.addApplicationResource(applicationResourceRepository.findByKey("P00000001"));
 		applicationRole.addApplicationResource(applicationResourceRepository.findByKey("P00000002"));
@@ -135,14 +135,14 @@ public class SecurityInitializer {
 		applicationRole.addApplicationResource(applicationResourceRepository.findByKey("P00000011"));
 		atomEm.persist(applicationRole);
 
-		ApplicationRole applicationRole2 = applicationRoleRepository.findByKey("SCXT_WORKINGHOURSVOLUME");
+		ApplicationRole applicationRole2 = applicationRoleRepository.findByName("SCXT_WORKINGHOURSVOLUME");
 		applicationRole2.addApplicationResource(applicationResourceRepository.findByKey("P00000007"));
 		applicationRole2.addApplicationResource(applicationResourceRepository.findByKey("P00000008"));
 		applicationRole2.addApplicationResource(applicationResourceRepository.findByKey("P00000011"));
 
 		atomEm.persist(applicationRole2);
 
-		ApplicationRole applicationRole3 = applicationRoleRepository.findByKey("WZXT_MATERIALSTORAGE");
+		ApplicationRole applicationRole3 = applicationRoleRepository.findByName("WZXT_MATERIALSTORAGE");
 		applicationRole3.addApplicationResource(applicationResourceRepository.findByKey("P00000001"));
 		applicationRole3.addApplicationResource(applicationResourceRepository.findByKey("P00000002"));
 		applicationRole3.addApplicationResource(applicationResourceRepository.findByKey("P00000003"));
@@ -153,7 +153,7 @@ public class SecurityInitializer {
 
 		atomEm.persist(applicationRole3);
 
-		ApplicationRole applicationRole4 = applicationRoleRepository.findByKey("PUSHMESSAGE");
+		ApplicationRole applicationRole4 = applicationRoleRepository.findByName("PUSHMESSAGE");
 		applicationRole4.addApplicationResource(applicationResourceRepository.findByKey("P00000009"));
 		applicationRole4.addApplicationResource(applicationResourceRepository.findByKey("P00000010"));
 		applicationRole4.addApplicationResource(applicationResourceRepository.findByKey("P00000011"));

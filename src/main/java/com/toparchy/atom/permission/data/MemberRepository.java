@@ -69,7 +69,7 @@ public class MemberRepository {
 		query.setParameter(Grant.ASSIGNEE, member);
 		List<ApplicationRole> roles = new ArrayList<ApplicationRole>();
 		for (Grant grant : query.getResultList()) {
-			roles.add(applicationRoleRepository.findByKey(grant.getRole().getName()));
+			roles.add(applicationRoleRepository.findByName(grant.getRole().getName()));
 		}
 		return roles;
 	}
