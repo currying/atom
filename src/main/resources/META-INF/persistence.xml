@@ -7,11 +7,11 @@
 	<persistence-unit name="atom">
 		<jta-data-source>java:jboss/datasources/atomDS</jta-data-source>
 		<class>com.toparchy.atom.permission.model.entity.MemberEntity</class>
-		<class>com.toparchy.atom.permission.model.entity.ApplicationRole</class>
+		<class>com.toparchy.atom.permission.model.entity.ApplicationRole2</class>
 		<class>com.toparchy.atom.permission.model.entity.ApplicationResource</class>
 		<class>com.toparchy.atom.permission.model.entity.DeviceEntity</class>
 		<class>org.picketlink.idm.jpa.model.sample.simple.AttributedTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.RoleTypeEntity</class>
+		<!-- <class>org.picketlink.idm.jpa.model.sample.simple.RoleTypeEntity</class> -->
 		<class>org.picketlink.idm.jpa.model.sample.simple.GroupTypeEntity</class>
 		<class>org.picketlink.idm.jpa.model.sample.simple.IdentityTypeEntity</class>
 		<class>org.picketlink.idm.jpa.model.sample.simple.RelationshipTypeEntity</class>
