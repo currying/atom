@@ -87,7 +87,7 @@ public class SecurityInitializer {
 		identityManager.add(user);
 		Password password = new Password(password_);
 		identityManager.updateCredential(user, password);
-		SystemRole role = new SystemRole(roleName);
+		SystemRole role = new SystemRole(roleName, aliasName);
 		identityManager.add(role);
 		RelationshipManager relationshipManager = this.partitionManager.createRelationshipManager();
 		grantRole(relationshipManager, user, role);
