@@ -5,11 +5,12 @@
   <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
    PATH="/login.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="success:#{loginController.login}:#index.xhtml" NAME="output"
-    PATH="/index.xhtml" TARGET="rules:#index.xhtml"
+    ID="success:#{loginController.login}:#view#index.xhtml"
+    NAME="output" PATH="/view/index.xhtml"
+    TARGET="rules:#view#index.xhtml"
     TITLE="#{loginController.login}:success" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+ <PROCESS-ITEM NAME="rules:#view#index.xhtml" PATH="/view/index.xhtml"
   SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
