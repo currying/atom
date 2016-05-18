@@ -36,6 +36,7 @@ public class MemberEntity extends IdentityTypeEntity {
 	private String phoneNumber;
 
 	@AttributeValue
+	@Column(unique = true)
 	private String email;
 
 	public String getLoginName() {

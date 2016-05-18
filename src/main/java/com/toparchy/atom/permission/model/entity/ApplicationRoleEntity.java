@@ -9,17 +9,21 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderBy;
+import javax.persistence.Table;
 
 import org.picketlink.idm.jpa.annotations.AttributeValue;
 import org.picketlink.idm.jpa.annotations.entity.IdentityManaged;
 import org.picketlink.idm.jpa.model.sample.simple.IdentityTypeEntity;
-import org.picketlink.idm.model.basic.Role;
 
-@IdentityManaged(Role.class)
+import com.toparchy.atom.permission.model.SystemRole;
+
+@IdentityManaged(SystemRole.class)
 @Entity
-public class ApplicationRole extends IdentityTypeEntity {
+@Table(name = "SYS_APPLICATION_ROLE")
+public class ApplicationRoleEntity extends IdentityTypeEntity {
 	private static final long serialVersionUID = 1183507936637255274L;
 	@AttributeValue
+	@Column(name = "SYS_APPLICATION_ROLE_NAME", length = 255, unique = true)
 	private String name;
 	@AttributeValue
 	@Column(name = "SYS_APPLICATION_ROLE_ASNAME", length = 255)
@@ -29,10 +33,10 @@ public class ApplicationRole extends IdentityTypeEntity {
 	@OrderBy("name ASC")
 	private Set<ApplicationResource> applicationResources = new HashSet<ApplicationResource>();
 
-	public ApplicationRole() {
+	public ApplicationRoleEntity() {
 	}
 
-	public ApplicationRole(String name, String asName) {
+	public ApplicationRoleEntity(String name, String asName) {
 		this.name = name;
 		this.asName = asName;
 	}

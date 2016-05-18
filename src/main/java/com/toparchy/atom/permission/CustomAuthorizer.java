@@ -24,7 +24,7 @@ import com.toparchy.atom.permission.annotations.P00000009;
 import com.toparchy.atom.permission.annotations.P00000010;
 import com.toparchy.atom.permission.annotations.P00000011;
 import com.toparchy.atom.permission.data.ApplicationResourceRepository;
-import com.toparchy.atom.permission.model.entity.ApplicationRole;
+import com.toparchy.atom.permission.model.entity.ApplicationRoleEntity;
 
 @ApplicationScoped
 public class CustomAuthorizer {
@@ -43,7 +43,7 @@ public class CustomAuthorizer {
 	public boolean doP00000001Check(Identity identity, IdentityManager identityManager,
 			RelationshipManager relationshipManager) throws Exception {
 		boolean b = false;
-		for (ApplicationRole role : applicationResourceRepository.findByKey("P00000001").getApplicationRoles()) {
+		for (ApplicationRoleEntity role : applicationResourceRepository.findByKey("P00000001").getApplicationRoles()) {
 			b = b || hasRole(relationshipManager, identity.getAccount(), getRole(identityManager, role.getName()));
 		}
 		return b;
@@ -54,7 +54,7 @@ public class CustomAuthorizer {
 	public boolean doP00000002Check(Identity identity, IdentityManager identityManager,
 			RelationshipManager relationshipManager) throws Exception {
 		boolean b = false;
-		for (ApplicationRole role : applicationResourceRepository.findByKey("P00000002").getApplicationRoles()) {
+		for (ApplicationRoleEntity role : applicationResourceRepository.findByKey("P00000002").getApplicationRoles()) {
 			b = b || hasRole(relationshipManager, identity.getAccount(), getRole(identityManager, role.getName()));
 		}
 		return b;
@@ -65,7 +65,7 @@ public class CustomAuthorizer {
 	public boolean doP00000003Check(Identity identity, IdentityManager identityManager,
 			RelationshipManager relationshipManager) throws Exception {
 		boolean b = false;
-		for (ApplicationRole role : applicationResourceRepository.findByKey("P00000003").getApplicationRoles()) {
+		for (ApplicationRoleEntity role : applicationResourceRepository.findByKey("P00000003").getApplicationRoles()) {
 			b = b || hasRole(relationshipManager, identity.getAccount(), getRole(identityManager, role.getName()));
 		}
 		return b;
@@ -76,7 +76,7 @@ public class CustomAuthorizer {
 	public boolean doP00000004Check(Identity identity, IdentityManager identityManager,
 			RelationshipManager relationshipManager) throws Exception {
 		boolean b = false;
-		for (ApplicationRole role : applicationResourceRepository.findByKey("P00000004").getApplicationRoles()) {
+		for (ApplicationRoleEntity role : applicationResourceRepository.findByKey("P00000004").getApplicationRoles()) {
 			b = b || hasRole(relationshipManager, identity.getAccount(), getRole(identityManager, role.getName()));
 		}
 		return b;
@@ -87,7 +87,7 @@ public class CustomAuthorizer {
 	public boolean doP00000005Check(Identity identity, IdentityManager identityManager,
 			RelationshipManager relationshipManager) throws Exception {
 		boolean b = false;
-		for (ApplicationRole role : applicationResourceRepository.findByKey("P00000005").getApplicationRoles()) {
+		for (ApplicationRoleEntity role : applicationResourceRepository.findByKey("P00000005").getApplicationRoles()) {
 			b = b || hasRole(relationshipManager, identity.getAccount(), getRole(identityManager, role.getName()));
 		}
 		return b;
@@ -98,7 +98,7 @@ public class CustomAuthorizer {
 	public boolean doP00000006Check(Identity identity, IdentityManager identityManager,
 			RelationshipManager relationshipManager) throws Exception {
 		boolean b = false;
-		for (ApplicationRole role : applicationResourceRepository.findByKey("P00000006").getApplicationRoles()) {
+		for (ApplicationRoleEntity role : applicationResourceRepository.findByKey("P00000006").getApplicationRoles()) {
 			b = b || hasRole(relationshipManager, identity.getAccount(), getRole(identityManager, role.getName()));
 		}
 		return b;
@@ -109,7 +109,7 @@ public class CustomAuthorizer {
 	public boolean doP00000007Check(Identity identity, IdentityManager identityManager,
 			RelationshipManager relationshipManager) throws Exception {
 		boolean b = false;
-		for (ApplicationRole role : applicationResourceRepository.findByKey("P00000007").getApplicationRoles()) {
+		for (ApplicationRoleEntity role : applicationResourceRepository.findByKey("P00000007").getApplicationRoles()) {
 			b = b || hasRole(relationshipManager, identity.getAccount(), getRole(identityManager, role.getName()));
 		}
 		return b;
@@ -120,7 +120,7 @@ public class CustomAuthorizer {
 	public boolean doP00000008Check(Identity identity, IdentityManager identityManager,
 			RelationshipManager relationshipManager) throws Exception {
 		boolean b = false;
-		for (ApplicationRole role : applicationResourceRepository.findByKey("P00000008").getApplicationRoles()) {
+		for (ApplicationRoleEntity role : applicationResourceRepository.findByKey("P00000008").getApplicationRoles()) {
 			b = b || hasRole(relationshipManager, identity.getAccount(), getRole(identityManager, role.getName()));
 		}
 		return b;
@@ -131,7 +131,7 @@ public class CustomAuthorizer {
 	public boolean doP00000009Check(Identity identity, IdentityManager identityManager,
 			RelationshipManager relationshipManager) throws Exception {
 		boolean b = false;
-		for (ApplicationRole role : applicationResourceRepository.findByKey("P00000009").getApplicationRoles()) {
+		for (ApplicationRoleEntity role : applicationResourceRepository.findByKey("P00000009").getApplicationRoles()) {
 			b = b || hasRole(relationshipManager, identity.getAccount(), getRole(identityManager, role.getName()));
 		}
 		return b;
@@ -142,7 +142,7 @@ public class CustomAuthorizer {
 	public boolean doP00000010Check(Identity identity, IdentityManager identityManager,
 			RelationshipManager relationshipManager) throws Exception {
 		boolean b = false;
-		for (ApplicationRole role : applicationResourceRepository.findByKey("P00000010").getApplicationRoles()) {
+		for (ApplicationRoleEntity role : applicationResourceRepository.findByKey("P00000010").getApplicationRoles()) {
 			b = b || hasRole(relationshipManager, identity.getAccount(), getRole(identityManager, role.getName()));
 		}
 		return b;
@@ -153,7 +153,7 @@ public class CustomAuthorizer {
 	public boolean doP00000011Check(Identity identity, IdentityManager identityManager,
 			RelationshipManager relationshipManager) throws Exception {
 		boolean b = false;
-		for (ApplicationRole role : applicationResourceRepository.findByKey("P00000011").getApplicationRoles()) {
+		for (ApplicationRoleEntity role : applicationResourceRepository.findByKey("P00000011").getApplicationRoles()) {
 			b = b || hasRole(relationshipManager, identity.getAccount(), getRole(identityManager, role.getName()));
 		}
 		return b;

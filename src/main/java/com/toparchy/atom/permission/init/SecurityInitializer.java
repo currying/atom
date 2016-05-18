@@ -15,13 +15,13 @@ import org.picketlink.idm.PartitionManager;
 import org.picketlink.idm.RelationshipManager;
 import org.picketlink.idm.credential.Password;
 import org.picketlink.idm.model.basic.Group;
-import org.picketlink.idm.model.basic.Role;
 
 import com.toparchy.atom.permission.data.ApplicationResourceRepository;
 import com.toparchy.atom.permission.data.ApplicationRoleRepository;
 import com.toparchy.atom.permission.model.Member;
+import com.toparchy.atom.permission.model.SystemRole;
 import com.toparchy.atom.permission.model.entity.ApplicationResource;
-import com.toparchy.atom.permission.model.entity.ApplicationRole;
+import com.toparchy.atom.permission.model.entity.ApplicationRoleEntity;
 
 @Singleton
 @Startup
@@ -47,10 +47,14 @@ public class SecurityInitializer {
 			addUser("user2", "user2", "测试", "2", "user2", "user2@qq.com", "user2", "scxt_group");
 			createUser("user3", "user3", "测试", "3", "user3", "user3@qq.com", "user3", "PUSHMESSAGE", "消息推送者");
 
-			createApplicationRole(new ApplicationRole("ADMINISTRATOR", "超级管理员"));
-			createApplicationRole(new ApplicationRole("SCXT_WORKINGHOURSVOLUME", "生产调度员角色"));
-			createApplicationRole(new ApplicationRole("WZXT_MATERIALSTORAGE", "物资仓储员"));
-			createApplicationRole(new ApplicationRole("PUSHMESSAGE", "消息推送者"));
+			// createApplicationRole(new ApplicationRole("ADMINISTRATOR",
+			// "超级管理员"));
+			// createApplicationRole(new
+			// ApplicationRole("SCXT_WORKINGHOURSVOLUME", "生产调度员角色"));
+			// createApplicationRole(new ApplicationRole("WZXT_MATERIALSTORAGE",
+			// "物资仓储员"));
+			// createApplicationRole(new ApplicationRole("PUSHMESSAGE",
+			// "消息推送者"));
 
 			createApplicationResource(new ApplicationResource("Administrator", "超级管理", "REST"));
 			createApplicationResource(new ApplicationResource("P00000001", "通过料单编号检索所有物资", "REST"));
@@ -83,7 +87,7 @@ public class SecurityInitializer {
 		identityManager.add(user);
 		Password password = new Password(password_);
 		identityManager.updateCredential(user, password);
-		Role role = new Role(roleName);
+		SystemRole role = new SystemRole(roleName);
 		identityManager.add(role);
 		RelationshipManager relationshipManager = this.partitionManager.createRelationshipManager();
 		grantRole(relationshipManager, user, role);
@@ -94,7 +98,7 @@ public class SecurityInitializer {
 		IdentityManager identityManager = this.partitionManager.createIdentityManager();
 		identityManager.add(group);
 		identityManager.update(group);
-		Role role = new Role(roleName);
+		SystemRole role = new SystemRole(roleName, aliasName);
 		identityManager.add(role);
 		RelationshipManager relationshipManager = this.partitionManager.createRelationshipManager();
 		grantRole(relationshipManager, group, role);
@@ -111,16 +115,16 @@ public class SecurityInitializer {
 		addToGroup(relationshipManager, user, getGroup(identityManager, groupName));
 	}
 
-	private void createApplicationRole(ApplicationRole applicationRole) {
-		atomEm.persist(applicationRole);
-	}
+	// private void createApplicationRole(ApplicationRole applicationRole) {
+	// atomEm.persist(applicationRole);
+	// }
 
 	private void createApplicationResource(ApplicationResource applicationResource) {
 		atomEm.persist(applicationResource);
 	}
 
 	private void createRoleResource() {
-		ApplicationRole applicationRole = applicationRoleRepository.findByName("ADMINISTRATOR");
+		ApplicationRoleEntity applicationRole = applicationRoleRepository.findByName("ADMINISTRATOR");
 		applicationRole.addApplicationResource(applicationResourceRepository.findByKey("Administrator"));
 		applicationRole.addApplicationResource(applicationResourceRepository.findByKey("P00000001"));
 		applicationRole.addApplicationResource(applicationResourceRepository.findByKey("P00000002"));
@@ -135,14 +139,14 @@ public class SecurityInitializer {
 		applicationRole.addApplicationResource(applicationResourceRepository.findByKey("P00000011"));
 		atomEm.persist(applicationRole);
 
-		ApplicationRole applicationRole2 = applicationRoleRepository.findByName("SCXT_WORKINGHOURSVOLUME");
+		ApplicationRoleEntity applicationRole2 = applicationRoleRepository.findByName("SCXT_WORKINGHOURSVOLUME");
 		applicationRole2.addApplicationResource(applicationResourceRepository.findByKey("P00000007"));
 		applicationRole2.addApplicationResource(applicationResourceRepository.findByKey("P00000008"));
 		applicationRole2.addApplicationResource(applicationResourceRepository.findByKey("P00000011"));
 
 		atomEm.persist(applicationRole2);
 
-		ApplicationRole applicationRole3 = applicationRoleRepository.findByName("WZXT_MATERIALSTORAGE");
+		ApplicationRoleEntity applicationRole3 = applicationRoleRepository.findByName("WZXT_MATERIALSTORAGE");
 		applicationRole3.addApplicationResource(applicationResourceRepository.findByKey("P00000001"));
 		applicationRole3.addApplicationResource(applicationResourceRepository.findByKey("P00000002"));
 		applicationRole3.addApplicationResource(applicationResourceRepository.findByKey("P00000003"));
@@ -153,7 +157,7 @@ public class SecurityInitializer {
 
 		atomEm.persist(applicationRole3);
 
-		ApplicationRole applicationRole4 = applicationRoleRepository.findByName("PUSHMESSAGE");
+		ApplicationRoleEntity applicationRole4 = applicationRoleRepository.findByName("PUSHMESSAGE");
 		applicationRole4.addApplicationResource(applicationResourceRepository.findByKey("P00000009"));
 		applicationRole4.addApplicationResource(applicationResourceRepository.findByKey("P00000010"));
 		applicationRole4.addApplicationResource(applicationResourceRepository.findByKey("P00000011"));

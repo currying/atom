@@ -11,24 +11,19 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "SYS_APPLICATION_RESOURCE")
-@XmlRootElement
 public class ApplicationResource implements Serializable {
 
 	private static final long serialVersionUID = 4440709995178566201L;
 	@Id
 	@Column(name = "SYS_APPLICATION_RESOURCE_ID", length = 50)
-	@GeneratedValue(generator = "applicationresource-uuid")
-	@GenericGenerator(name = "applicationresource-uuid", strategy = "uuid")
+	@GeneratedValue(generator = "systemresource-uuid")
+	@GenericGenerator(name = "systemresource-uuid", strategy = "uuid")
 	private String id;
 	@Column(name = "SYS_APPLICATION_RESOURCE_KEY", length = 255)
 	private String key;
@@ -37,9 +32,7 @@ public class ApplicationResource implements Serializable {
 	@Column(name = "SYS_APPLICATION_RESOURCE_TYPE", length = 255)
 	private String type;
 	@ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "applicationResources")
-	@JsonIgnore
-	@OrderBy("key ASC")
-	private Set<ApplicationRole> applicationRoles = new HashSet<ApplicationRole>();
+	private Set<ApplicationRoleEntity> applicationRoles = new HashSet<ApplicationRoleEntity>();
 
 	public ApplicationResource() {
 	}
@@ -82,11 +75,11 @@ public class ApplicationResource implements Serializable {
 		this.type = type;
 	}
 
-	public Set<ApplicationRole> getApplicationRoles() {
+	public Set<ApplicationRoleEntity> getApplicationRoles() {
 		return applicationRoles;
 	}
 
-	public void setApplicationRoles(Set<ApplicationRole> applicationRoles) {
+	public void setApplicationRoles(Set<ApplicationRoleEntity> applicationRoles) {
 		this.applicationRoles = applicationRoles;
 	}
 

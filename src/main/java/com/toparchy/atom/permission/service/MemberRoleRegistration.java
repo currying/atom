@@ -11,7 +11,7 @@ import org.picketlink.idm.model.basic.BasicModel;
 import org.picketlink.idm.model.basic.Role;
 
 import com.toparchy.atom.permission.model.Member;
-import com.toparchy.atom.permission.model.entity.ApplicationRole;
+import com.toparchy.atom.permission.model.entity.ApplicationRoleEntity;
 
 @Stateless
 public class MemberRoleRegistration {
@@ -24,13 +24,13 @@ public class MemberRoleRegistration {
 	@Inject
 	private IdentityManager identityManager;
 
-	public void grantRoleToMember(Member member, ApplicationRole applicationRole) {
+	public void grantRoleToMember(Member member, ApplicationRoleEntity applicationRole) {
 		Role role = BasicModel.getRole(identityManager, applicationRole.getName());
 		if (!BasicModel.hasRole(relationshipManager, member, role))
 			BasicModel.grantRole(relationshipManager, member, role);
 	}
 
-	public void revokeRoleFromMember(Member member, ApplicationRole applicationRole) {
+	public void revokeRoleFromMember(Member member, ApplicationRoleEntity applicationRole) {
 		Role role = BasicModel.getRole(identityManager, applicationRole.getName());
 		BasicModel.revokeRole(relationshipManager, member, role);
 	}

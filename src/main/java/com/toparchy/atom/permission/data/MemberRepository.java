@@ -17,7 +17,7 @@ import org.picketlink.idm.query.IdentityQueryBuilder;
 import org.picketlink.idm.query.RelationshipQuery;
 
 import com.toparchy.atom.permission.model.Member;
-import com.toparchy.atom.permission.model.entity.ApplicationRole;
+import com.toparchy.atom.permission.model.entity.ApplicationRoleEntity;
 
 @ApplicationScoped
 public class MemberRepository {
@@ -64,10 +64,10 @@ public class MemberRepository {
 		return groups;
 	}
 
-	public List<ApplicationRole> findRoleFromMember(Member member) {
+	public List<ApplicationRoleEntity> findRoleFromMember(Member member) {
 		RelationshipQuery<Grant> query = this.relationshipManager.createRelationshipQuery(Grant.class);
 		query.setParameter(Grant.ASSIGNEE, member);
-		List<ApplicationRole> roles = new ArrayList<ApplicationRole>();
+		List<ApplicationRoleEntity> roles = new ArrayList<ApplicationRoleEntity>();
 		for (Grant grant : query.getResultList()) {
 			roles.add(applicationRoleRepository.findByName(grant.getRole().getName()));
 		}

@@ -10,7 +10,7 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.toparchy.atom.permission.model.entity.ApplicationRole;
+import com.toparchy.atom.permission.model.entity.ApplicationRoleEntity;
 
 @ApplicationScoped
 public class ApplicationRoleListProducer {
@@ -18,16 +18,16 @@ public class ApplicationRoleListProducer {
 	@Inject
 	private ApplicationRoleRepository applicationRoleRepository;
 
-	private List<ApplicationRole> applicationRoles;
+	private List<ApplicationRoleEntity> applicationRoles;
 
 	@Produces
 	@Named
-	public List<ApplicationRole> getApplicationRoles() {
+	public List<ApplicationRoleEntity> getApplicationRoles() {
 		return applicationRoles;
 	}
 
 	public void onApplicationRoleRepositoryListChanged(
-			@Observes(notifyObserver = Reception.IF_EXISTS) final ApplicationRole role) {
+			@Observes(notifyObserver = Reception.IF_EXISTS) final ApplicationRoleEntity role) {
 		retrieveAllApplicationRoleRepositorys();
 	}
 

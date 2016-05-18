@@ -11,7 +11,7 @@ import org.picketlink.idm.model.basic.BasicModel;
 import org.picketlink.idm.model.basic.Role;
 
 import com.toparchy.atom.permission.model.entity.ApplicationResource;
-import com.toparchy.atom.permission.model.entity.ApplicationRole;
+import com.toparchy.atom.permission.model.entity.ApplicationRoleEntity;
 
 @Stateless
 public class RoleResourceRegistration {
@@ -21,10 +21,10 @@ public class RoleResourceRegistration {
 	private PartitionManager partitionManager;
 
 	@Inject
-	private Event<ApplicationRole> applicationRoleEventSrc;
+	private Event<ApplicationRoleEntity> applicationRoleEventSrc;
 
-	public void add(ApplicationRole applicationRole, ApplicationResource applicationResource) {
-		ApplicationRole role = atomEm.find(ApplicationRole.class, applicationRole.getId());
+	public void add(ApplicationRoleEntity applicationRole, ApplicationResource applicationResource) {
+		ApplicationRoleEntity role = atomEm.find(ApplicationRoleEntity.class, applicationRole.getId());
 		ApplicationResource resource = atomEm.find(ApplicationResource.class, applicationResource.getId());
 		role.addApplicationResource(resource);
 		// applicationRole.addApplicationResource(applicationResource);
@@ -33,8 +33,8 @@ public class RoleResourceRegistration {
 		applicationRoleEventSrc.fire(role);
 	}
 
-	public void remove(ApplicationRole applicationRole, ApplicationResource applicationResource) {
-		ApplicationRole role = atomEm.find(ApplicationRole.class, applicationRole.getId());
+	public void remove(ApplicationRoleEntity applicationRole, ApplicationResource applicationResource) {
+		ApplicationRoleEntity role = atomEm.find(ApplicationRoleEntity.class, applicationRole.getId());
 		ApplicationResource resource = atomEm.find(ApplicationResource.class, applicationResource.getId());
 		role.removeApplicationResource(resource);
 		// applicationRole.removeApplicationResource(applicationResource);
@@ -43,7 +43,7 @@ public class RoleResourceRegistration {
 		applicationRoleEventSrc.fire(role);
 	}
 
-	public void createRole(ApplicationRole applicationRole) {
+	public void createRole(ApplicationRoleEntity applicationRole) {
 		atomEm.persist(applicationRole);
 		atomEm.flush();
 		applicationRoleEventSrc.fire(applicationRole);
@@ -52,8 +52,8 @@ public class RoleResourceRegistration {
 		identityManager.add(role);
 	}
 
-	public void deleteRole(ApplicationRole applicationRole) {
-		ApplicationRole role = atomEm.find(ApplicationRole.class, applicationRole.getId());
+	public void deleteRole(ApplicationRoleEntity applicationRole) {
+		ApplicationRoleEntity role = atomEm.find(ApplicationRoleEntity.class, applicationRole.getId());
 		atomEm.remove(role);
 		atomEm.flush();
 		applicationRoleEventSrc.fire(role);

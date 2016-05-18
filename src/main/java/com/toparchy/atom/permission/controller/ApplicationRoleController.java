@@ -15,7 +15,7 @@ import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 
 import com.toparchy.atom.permission.model.entity.ApplicationResource;
-import com.toparchy.atom.permission.model.entity.ApplicationRole;
+import com.toparchy.atom.permission.model.entity.ApplicationRoleEntity;
 import com.toparchy.atom.permission.service.RoleResourceRegistration;
 
 @Model
@@ -28,24 +28,24 @@ public class ApplicationRoleController implements Serializable {
 	private boolean disabled = true;
 	@Produces
 	@Named
-	private ApplicationRole selectApplicationRole;
+	private ApplicationRoleEntity selectApplicationRole;
 	@Produces
 	@Named
 	private Set<ApplicationResource> currentApplicationResources;
 	@Produces
 	@Named
-	private ApplicationRole newApplicationRole;
+	private ApplicationRoleEntity newApplicationRole;
 
 	@PostConstruct
 	public void initNewApplicationRole() {
-		newApplicationRole = new ApplicationRole();
+		newApplicationRole = new ApplicationRoleEntity();
 	}
 
-	public ApplicationRole getSelectApplicationRole() {
+	public ApplicationRoleEntity getSelectApplicationRole() {
 		return selectApplicationRole;
 	}
 
-	public void setSelectApplicationRole(ApplicationRole selectApplicationRole) {
+	public void setSelectApplicationRole(ApplicationRoleEntity selectApplicationRole) {
 		this.selectApplicationRole = selectApplicationRole;
 	}
 
@@ -58,7 +58,7 @@ public class ApplicationRoleController implements Serializable {
 	}
 
 	public void onRowSelect(SelectEvent event) {
-		selectApplicationRole = (ApplicationRole) event.getObject();
+		selectApplicationRole = (ApplicationRoleEntity) event.getObject();
 		currentApplicationResources = selectApplicationRole.getApplicationResources();
 		if (selectApplicationRole != null)
 			disabled = false;
@@ -79,11 +79,11 @@ public class ApplicationRoleController implements Serializable {
 		RequestContext.getCurrentInstance().openDialog("selectApplicationResource");
 	}
 
-	public ApplicationRole getNewApplicationRole() {
+	public ApplicationRoleEntity getNewApplicationRole() {
 		return newApplicationRole;
 	}
 
-	public void setNewApplicationRole(ApplicationRole newApplicationRole) {
+	public void setNewApplicationRole(ApplicationRoleEntity newApplicationRole) {
 		this.newApplicationRole = newApplicationRole;
 	}
 

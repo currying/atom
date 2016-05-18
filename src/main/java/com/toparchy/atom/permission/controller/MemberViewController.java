@@ -16,7 +16,7 @@ import org.primefaces.event.UnselectEvent;
 
 import com.toparchy.atom.permission.data.MemberRepository;
 import com.toparchy.atom.permission.model.Member;
-import com.toparchy.atom.permission.model.entity.ApplicationRole;
+import com.toparchy.atom.permission.model.entity.ApplicationRoleEntity;
 import com.toparchy.atom.permission.service.MemberRoleRegistration;
 
 @Model
@@ -38,7 +38,7 @@ public class MemberViewController implements Serializable {
 	private List<Group> currentGroups;
 	@Produces
 	@Named
-	private List<ApplicationRole> currentRoles;
+	private List<ApplicationRoleEntity> currentRoles;
 
 	public Member getCurrentMember() {
 		return currentMember;
@@ -56,11 +56,11 @@ public class MemberViewController implements Serializable {
 		this.currentGroups = currentGroups;
 	}
 
-	public List<ApplicationRole> getCurrentRoles() {
+	public List<ApplicationRoleEntity> getCurrentRoles() {
 		return currentRoles;
 	}
 
-	public void setCurrentRoles(List<ApplicationRole> currentRoles) {
+	public void setCurrentRoles(List<ApplicationRoleEntity> currentRoles) {
 		this.currentRoles = currentRoles;
 	}
 
@@ -86,17 +86,17 @@ public class MemberViewController implements Serializable {
 		RequestContext.getCurrentInstance().openDialog("selectApplicationRole");
 	}
 
-	public void selectRoleFromDialog(ApplicationRole applicationRole) {
+	public void selectRoleFromDialog(ApplicationRoleEntity applicationRole) {
 		RequestContext.getCurrentInstance().closeDialog(applicationRole);
 	}
 
 	public void onRoleChosen(SelectEvent event) {
-		ApplicationRole role = (ApplicationRole) event.getObject();
+		ApplicationRoleEntity role = (ApplicationRoleEntity) event.getObject();
 		memberRoleRegistration.grantRoleToMember(currentMember, role);
 		currentRoles.add(role);
 	}
 
-	public void revokeRoleFromMember(ApplicationRole role) {
+	public void revokeRoleFromMember(ApplicationRoleEntity role) {
 		memberRoleRegistration.revokeRoleFromMember(currentMember, role);
 		currentRoles.remove(role);
 	}
